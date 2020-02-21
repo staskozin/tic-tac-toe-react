@@ -18,7 +18,7 @@ ol, ul {
     flex-direction: row;
     justify-content: space-around;
     margin-left: 15px;
-    margin-top: 5px;
+    margin-top: 3px;
 }
 
 .index {
@@ -28,7 +28,7 @@ ol, ul {
 
 .index_ver {
     margin-top: 7px;
-    margin-right: 6px;
+    margin-right: 7px;
 }
 
 .status {
@@ -65,4 +65,8 @@ ol, ul {
 
 .game-info {
     margin-left: 20px;
+}
+
+.current-step button {
+    color: red;
 }
