@@ -13,6 +13,24 @@ ol, ul {
     display: table;
 }
 
+.board-row_index {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 15px;
+    margin-top: 5px;
+}
+
+.index {
+    float: left;
+    color: #999;
+}
+
+.index_ver {
+    margin-top: 7px;
+    margin-right: 6px;
+}
+
 .status {
     margin-bottom: 10px;
 }

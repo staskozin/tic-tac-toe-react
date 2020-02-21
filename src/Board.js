@@ -18,7 +18,7 @@ class Board extends React.Component {
       let squares = []
       for (const m = index + 3; index < m; index++)
         squares.push(this.renderSquare(index))
-      rows.push(<div key={i} className="board-row">{squares}</div>)
+    rows.push(<div key={i} className="board-row"><div className="index index_ver">{i+1}</div>{squares}</div>)
     }
     return rows
   }
@@ -27,6 +27,11 @@ class Board extends React.Component {
     return (
       <div>
         {this.renderRows()}
+        <div className="board-row_index">
+          <div className="index">1</div>
+          <div className="index">2</div>
+          <div className="index">3</div>
+        </div>
       </div>
     )
   }
