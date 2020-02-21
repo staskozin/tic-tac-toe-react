@@ -67,6 +67,15 @@ ol, ul {
     margin-left: 20px;
 }
 
-.current-step button {
-    color: red;
+.moves-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.moves-list li {
+    margin-bottom: 10px;
+}
+
+.current-move button {
+    color: #d40000;
 }

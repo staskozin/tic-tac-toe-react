@@ -28,9 +28,9 @@ class Board extends React.Component {
       <div>
         {this.renderRows()}
         <div className="board-row_index">
-          <div className="index">1</div>
-          <div className="index">2</div>
-          <div className="index">3</div>
+          <div className="index">A</div>
+          <div className="index">B</div>
+          <div className="index">C</div>
         </div>
       </div>
     )

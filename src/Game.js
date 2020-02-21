@@ -12,6 +12,7 @@ class Game extends React.Component {
           index: 0
         }
       ],
+      isMovesListReversed: false,
       stepNumber: 0,
       xIsNext: true
     }
@@ -36,6 +37,12 @@ class Game extends React.Component {
     })
   }
 
+  handleMovesListCheckbox () {
+    this.setState({
+      isMovesListReversed: !this.state.isMovesListReversed
+    })
+  }
+
   jumpTo (step) {
     this.setState({
       stepNumber: step,
@@ -49,14 +56,16 @@ class Game extends React.Component {
     const winner = calculateWinner(current.squares.slice())
 
     const moves = history.map((step, move) => {
-      const desc = move ? 'Jump to move #' + move + ' (' + getCoordsFromSquare(step.index).join(', ') + ')' : 'Jump to start'
-      const className = move === this.state.stepNumber ? 'current-step' : ''
+      const desc = move ? 'Jump to move #' + move + ' (' + getCoordsFromSquare(step.index) + ')' : 'Jump to start'
+      const className = move === this.state.stepNumber ? 'current-move' : ''
       return (
         <li key={move} className={className}>
           <button onClick={() => this.jumpTo(move)}>{desc}</button>
         </li>
       )
     })
+    if (this.state.isMovesListReversed)
+      moves.reverse()
 
     let status
     if (winner)
@@ -76,7 +85,12 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <label>
+            <input onChange={() => this.handleMovesListCheckbox()} type="checkbox" />
+            Reverse moves list
+          </label>
+          
+          <ul className="moves-list">{moves}</ul>
         </div>
       </div>
     );
@@ -106,5 +120,10 @@ function calculateWinner (squares) {
 }
 
 function getCoordsFromSquare(i) {
-  return [i % 3 + 1, Math.floor(i / 3) + 1]
+  const letters = {
+    1: 'A',
+    2: 'B',
+    3: 'C'
+  }
+  return letters[i % 3 + 1] + (Math.floor(i / 3) + 1)
 }
