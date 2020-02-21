@@ -54,6 +54,10 @@ ol, ul {
     outline: none;
 }
 
+.square-win {
+    color: #d40000;
+}
+
 .kbd-navigation .square:focus {
     background: #ddd;
 }

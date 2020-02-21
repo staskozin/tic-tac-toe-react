@@ -53,7 +53,8 @@ class Game extends React.Component {
   render () {
     const history = this.state.history
     const current = history[this.state.stepNumber]
-    const winner = calculateWinner(current.squares.slice())
+    const win = calculateWinner(current.squares.slice())
+    const [winner, winCombination] = win ? win : [null, null]
 
     const moves = history.map((step, move) => {
       const desc = move ? 'Jump to move #' + move + ' (' + getCoordsFromSquare(step.index) + ')' : 'Jump to start'
@@ -81,6 +82,7 @@ class Game extends React.Component {
           <Board
             squares={current.squares}
             onClick={(i) => this.handleClick(i)}
+            winCombination={winCombination}
           />
         </div>
         <div className="game-info">
@@ -113,7 +115,7 @@ function calculateWinner (squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i]
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a]
+      return [squares[a], lines[i]]
     }
   }
   return null
